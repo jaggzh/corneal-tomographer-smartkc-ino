@@ -24,7 +24,8 @@ Adafruit_NeoPixel pixels = Adafruit_NeoPixel(TOTPIXELS, PIN, NEO_GRB + NEO_KHZ80
 int delayms = 20;
 
 int led_brightness[] =
-	{160,130,160,130,160,130,160,130,160,130,100,0};
+	{200,160,200,160,200,160,200,160,200,160,120,0}; // cornea
+	//{160,130,160,130,160,130,160,130,160,130,100,0}; // for cornea
 
 // Actual actively-used LEDs in pattern
 // (Tests might use TOTPIXELS)
@@ -83,8 +84,8 @@ void set_active_on() {
 	led_all_off();
 	for (unsigned int i = 0; i<(sizeof(led_brightness) / sizeof(*led_brightness)); i++) {
 		int b = led_brightness[i];
-		int r = 0;
-		int g = 0;
+		int r = b;
+		int g = b;
 		pixels.setPixelColor(i, pixels.Color(r, g, b));
 		pixels.show();
 		delay(delayms);
